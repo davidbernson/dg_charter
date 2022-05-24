@@ -1,0 +1,27 @@
+import pandas as pd
+import math
+import numpy as np
+import geopy.distance
+
+from us_states import states_list, states_dict
+
+course_data = pd.read_csv('courses.csv')
+
+# print(course_data)
+
+index_high_rated = []
+temp_data = course_data
+
+for i in states_list:
+
+    for state in course_data.index:      
+        top_courses = temp_data.loc[(temp_data["state"] == states_dict[i]) & (temp_data["rating"] >= 4)]
+        
+    print(top_courses["rating"].mean())
+    #print(top_courses)   
+
+#print(index_high_rated)
+#coords_1 = (52.2296756, 21.0122287)
+#coords_2 = (52.406374, 16.9251681)
+
+#print(geopy.distance.geodesic(coords_1, coords_2).km)
